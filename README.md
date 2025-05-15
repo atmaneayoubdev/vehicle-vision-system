@@ -1,22 +1,27 @@
-# 🔍 Vehicle Intelligence API Suite
+# 🚗 Vehicle Vision System
 
-**Custom-trained YOLOv8 models served with FastAPI for real-time vehicle intelligence.**  
-This project provides production-grade APIs for license plate detection, full vehicle detection, and vehicle damage assessment.
+A production-ready **Computer Vision** system built with **YOLOv8** and **FastAPI**, offering real-time APIs for:
 
-<br>
+- 🔍 **License Plate Detection**
+- 💥 **Vehicle Damage Detection**
+- 🚘 **Vehicle Detection**
 
-## 🛠️ Tech Stack
+This project showcases end-to-end deep learning integration — from **training custom models** to **deploying scalable APIs**, making it a powerful example of applying computer vision to real-world automotive use cases.
 
-![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.110.0-green?logo=fastapi)
-![YOLOv8](https://img.shields.io/badge/YOLOv8-ultralytics-orange?logo=openai&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-2.1.0-red?logo=pytorch)
-![OpenCV](https://img.shields.io/badge/OpenCV-4.8.0-blue?logo=opencv&logoColor=white)
-![Uvicorn](https://img.shields.io/badge/Uvicorn-ASGI-8A2BE2?logo=uvicorn&logoColor=white)
-![Conda](https://img.shields.io/badge/Conda-Forge-44BB88?logo=anaconda)
+<br/>
 
----
+## 🔧 Tech Stack
 
-🚀 Built for real-time inference, model serving, and computer vision automation.
+| Technology       | Description                          | Version / Tool     |
+|------------------|--------------------------------------|--------------------|
+| ![YOLO](https://img.shields.io/badge/YOLOv8-Ultralytics-31C48D?logo=python&logoColor=white) | Object Detection Framework     | YOLOv8 (`ultralytics`) |
+| ![FastAPI](https://img.shields.io/badge/FastAPI-Backend-2CA5E0?logo=fastapi&logoColor=white) | High-performance API backend  | FastAPI |
+| ![Python](https://img.shields.io/badge/Python-Image%20Processing-3776AB?logo=python&logoColor=white) | Core language + OpenCV        | Python 3.11 |
+| ![Torch](https://img.shields.io/badge/PyTorch-Model%20Loading-EE4C2C?logo=pytorch&logoColor=white) | Model runtime environment      | PyTorch |
+| ![Postman](https://img.shields.io/badge/Postman-Tested%20APIs-FF6C37?logo=postman&logoColor=white) | Local testing + examples      | Postman / Curl |
+| ![OpenCV](https://img.shields.io/badge/OpenCV-BoundingBoxes-5C3EE8?logo=opencv&logoColor=white) | Drawing detections (tests)    | OpenCV |
 
-⚠️ Note: Models and datasets are **not publicly shared** due to licensing and commercial value.
+<br/>
+
+> 💡 **Note:** Pretrained model weights and datasets are **not included** in this repo for intellectual property reasons. The README includes instructions on training and integrating your own models.
+
