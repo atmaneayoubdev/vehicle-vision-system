@@ -359,3 +359,94 @@ vehicle-vision-system/
 ├── requirements.txt
 └── README.md
 ```
+
+### 🐳 Dockerfile
+
+This Dockerfile sets up the FastAPI app with all required dependencies and runs the server using Uvicorn.
+
+```Dockerfile
+# Use official lightweight Python image
+FROM python:3.11-slim
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the entire app
+COPY . .
+
+# Expose the FastAPI port
+EXPOSE 8000
+
+# Run the FastAPI app
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+
+### ⚙️ Step 3: docker-compose.yml
+
+Use `docker-compose` to simplify running the API service, especially useful in a development or deployment environment. This configuration ensures the container builds properly, mounts the local model files, and restarts automatically if needed.
+
+```yaml
+version: "3.9"
+
+services:
+  vehicle-vision-api:
+    build: .
+    container_name: vehicle_vision_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app/models:/app/app/models  # Mount model files
+      - ./examples:/app/examples      # Mount example images (optional)
+    restart: always
+
+
+## 🚀 Usage
+
+Once your container is running, you can interact with the APIs for vehicle license plate detection, type classification, and damage detection.
+
+### 🔧 How to Use
+
+Send a POST request with a base64-encoded image in the following JSON format:
+
+```json
+{
+  "image": "<base64_encoded_image>",
+  "origin": "demo"
+}
+```
+
+### 🧪 Python Example
+```python
+import requests
+import base64
+
+# Replace with your test image path
+with open("examples/vehicle_type_01.jpg", "rb") as img_file:
+    b64_image = base64.b64encode(img_file.read()).decode()
+
+payload = {"image": b64_image, "origin": "demo"}
+response = requests.post("http://localhost:8000/api/v1/vehicle-type-classifier", json=payload)
+
+print(response.json())
+```
+
+### 🧪 curl Example
+```bash
+curl -X POST http://localhost:8000/api/v1/vehicle-type-classifier \
+  -H "Content-Type: application/json" \
+  -d '{"image": "<base64_encoded_image>", "origin": "demo"}'  
+```
+
+> 💡 **Pro Tip:** For production environments:
+> - Mount model directories as volumes instead of copying them into the container.
+> - Use a reverse proxy like **Nginx** to serve the FastAPI app behind **HTTPS**.
+> - Enable request logging and monitoring (e.g., with **Prometheus**, **Grafana**, or **Sentry**) for observability.
+> - Scale using container orchestration tools like **Docker Compose**, **Kubernetes**, or **AWS ECS**.
