@@ -236,3 +236,100 @@ yolo task=detect mode=train model=yolov8n.pt data=dataset.yaml epochs=50 imgsz=6
 ```
 
 ---
+
+## Setup & Running Inference
+
+Once you've trained your models and saved them into the `app/models/` directory, you can easily run the system locally or in a production-like containerized environment using Docker.
+
+### 📁 Expected Directory Structure
+
+```bash
+vehicle-vision-system/
+├── app/
+│ ├── main.py
+│ ├── api/
+│ ├── models/
+│ │ ├── license_plate_best.pt
+│ │ ├── vehicle_type_best.pt
+│ │ └── vehicle_damage_best.pt
+│ └── services/
+├── examples/
+├── Dockerfile
+├── requirements.txt
+└── README.md
+```
+
+
+Ensure the trained YOLOv8 models are correctly named and placed inside `app/models/`.
+
+---
+
+### 🔧 Local Development (FastAPI + Uvicorn)
+
+You can test the APIs locally using Uvicorn.
+
+**Install dependencies (in a virtualenv or Conda environment):**
+
+```bash
+pip install -r requirements.txt
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+Navigate to the interactive API docs at:
+📍 http://localhost:8000/docs
+
+
+### 🐳 Run with Docker (Recommended)
+A Dockerized setup ensures consistency across environments.
+
+1. Build the Docker image
+```bash
+docker build -t vehicle-vision-api .
+```
+2. Run the container
+```bash
+docker run -p 8000:8000 vehicle-vision-api
+```
+
+This will expose the API at http://localhost:8000.
+
+To run in the background:
+
+```bash
+docker run -d -p 8000:8000 vehicle-vision-api
+```
+
+
+
+### 🧪 Testing the APIs
+After the server is running, test it by sending a base64 image payload to any of the 3 endpoints:
+
+/api/v1/license-plate-detector
+
+/api/v1/vehicle-type-classifier
+
+/api/v1/vehicle-damage-detector
+
+### Example test request (Python):
+
+```python
+
+import requests
+import base64
+
+with open("examples/license_plate_01.jpg", "rb") as f:
+    b64 = base64.b64encode(f.read()).decode()
+
+res = requests.post("http://localhost:8000/api/v1/license-plate-detector", json={"image": b64, "origin": "test"})
+print(res.json())
+```
+
+### ✅ Endpoints Recap
+
+| Endpoint                            | Method | Description                     |
+|------------------------------------|--------|---------------------------------|
+| `/api/v1/license-plate-detector`   | POST   | Detects vehicle license plates  |
+| `/api/v1/vehicle-type-classifier`  | POST   | Classifies vehicle type         |
+| `/api/v1/vehicle-damage-detector`  | POST   | Detects damaged vehicle regions |
+
+> 🧠 **Pro Tip:** If you're running in production, consider mounting volumes for model files and serving behind a reverse proxy like Nginx with HTTPS.
