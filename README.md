@@ -95,38 +95,6 @@ This section demonstrates sample inputs and the corresponding outputs for the th
 
 ---
 
-### Vehicle Type Classification
-
-**Input Image:**
-
-![Vehicle Type Input](examples/vehicle_damage_detection_example.png)
-
-**API Request (Python example):**
-
-    import requests
-    import base64
-
-    with open("examples/vehicle_type_01.jpg", "rb") as img_file:
-        b64_image = base64.b64encode(img_file.read()).decode()
-
-    payload = {"image": b64_image, "origin": "demo"}
-
-    response = requests.post("http://localhost:8000/api/v1/vehicle-type-classifier", json=payload)
-    print(response.json())
-
-**Sample API Response:**
-
-    {
-      "predictions": [
-        {
-          "label": "Sedan",
-          "confidence": 0.95
-        }
-      ]
-    }
-
----
-
 ### Vehicle Damage Detection
 
 **Input Image:**
@@ -165,4 +133,4 @@ This section demonstrates sample inputs and the corresponding outputs for the th
 
 **Output Visualization:**
 
-![Vehicle Damage Output](examples/vehicle_damage_01_output.jpg)
+![Vehicle Damage Output](examples/vehicle_damage_detection_example.png)
