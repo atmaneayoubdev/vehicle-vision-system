@@ -90,7 +90,7 @@ This section demonstrates sample inputs and the corresponding outputs for the th
 
 **Output Visualization:**
 
-![Vehicle Damage Output](examples/vehicle_damage_detection_example.png)
+![License Plate Output](examples/vehicle_detection_example.png)
 
 ---
 
@@ -164,7 +164,7 @@ This section demonstrates sample inputs and the corresponding outputs for the th
     }
 
 **Output Visualization:**
-![License Plate Output](examples/vehicle_detection_example.png)
+![Vehicle Damage Output](examples/vehicle_damage_detection_example.png)
 
 
 
