@@ -33,8 +33,8 @@ if response.status_code == 200:
     height, width = image.shape[:2]
 
     # Dynamically adjust font scale and thickness
-    font_scale = max(0.8, min(width, height) / 1000)
-    thickness = max(2, int(min(width, height) / 500))
+    font_scale = max(0.6, min(width, height) / 1000)
+    thickness = max(2, int(min(width, height) / 300))
 
     for det in detections:
         # We can filter for specific damage classes like "damaged door", "damaged bumper" etc.
@@ -45,13 +45,12 @@ if response.status_code == 200:
         x1, y1, x2, y2 = map(int, det["box"])
 
         # Draw bounding box
-        cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0),
-                      thickness)  # Green for damage
+        cv2.rectangle(image, (x1, y1), (x2, y2), (255, 0, 0), thickness)
 
         # Add label and confidence
         text = f"{det['label']}: {confidence:.2f}"
         cv2.putText(image, text, (x1, max(30, y1 - 10)),
-                    cv2.FONT_HERSHEY_SIMPLEX, font_scale, (0, 255, 0), thickness)
+                    cv2.FONT_HERSHEY_SIMPLEX, font_scale, (255, 0, 0), thickness)
 
     # Show the image
     cv2.imshow("Vehicle Damage Detection", image)
