@@ -216,4 +216,23 @@ Use annotation tools such as [LabelImg](https://github.com/tzutalin/labelImg) or
 
 If you want to see a full training pipeline example, check out the [Ultralytics YOLOv8 docs](https://docs.ultralytics.com/).
 
+
+Each `.txt` label file corresponds to an image and contains object annotations formatted as:  
+`<class_id> <x_center> <y_center> <width> <height>`,  
+where coordinates are normalized (values between 0 and 1) relative to the image dimensions.
+
+### Training Workflow
+
+The models were trained using the [Ultralytics YOLOv8](https://docs.ultralytics.com/) framework, which provides an efficient and flexible pipeline.
+
+Basic steps include:
+
+1. **Label your data:** Annotate images using the tools mentioned above.
+2. **Organize dataset:** Structure images and labels following the example above, ensuring a split between training and validation sets.
+3. **Train the model:** Use commands like the following to start training:
+
+```bash
+yolo task=detect mode=train model=yolov8n.pt data=dataset.yaml epochs=50 imgsz=640
+```
+
 ---
