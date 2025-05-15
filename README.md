@@ -333,3 +333,29 @@ print(res.json())
 | `/api/v1/vehicle-damage-detector`  | POST   | Detects damaged vehicle regions |
 
 > 🧠 **Pro Tip:** If you're running in production, consider mounting volumes for model files and serving behind a reverse proxy like Nginx with HTTPS.
+
+
+## 🚀 Deployment
+
+To deploy the Vehicle Vision System in a production-ready environment, we recommend using **Docker** along with **Docker Compose**. This ensures reproducibility, easy scaling, and compatibility across different systems.
+
+### 🔧 Folder Structure
+
+Ensure your project has the following structure:
+
+```
+vehicle-vision-system/
+│
+├── app/
+│ ├── main.py
+│ ├── api/
+│ ├── models/ # Pretrained YOLOv8 .pt model files here
+│ ├── services/
+│ └── core/
+│
+├── examples/ # Example images for testing
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+└── README.md
+```
