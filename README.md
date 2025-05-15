@@ -134,3 +134,53 @@ This section demonstrates sample inputs and the corresponding outputs for the th
 **Output Visualization:**
 
 ![Vehicle Damage Output](examples/vehicle_damage_detection_example.png)
+
+
+## Training the Models
+
+This project leverages custom-trained YOLOv8 models for three key computer vision tasks:
+
+- License Plate Detection
+- Vehicle Type Classification
+- Vehicle Damage Detection
+
+To achieve high accuracy and robustness, the models were trained on carefully curated datasets with precise annotations.
+
+### Dataset Preparation & Labeling
+
+For training, images need to be collected and annotated according to the task:
+
+- **License Plate Detection:** Annotate bounding boxes around vehicle license plates.
+- **Vehicle Type Classification:** Label images by vehicle type (e.g., Sedan, SUV, Truck).
+- **Vehicle Damage Detection:** Annotate damaged vehicle parts with bounding boxes (e.g., damaged bumper, broken headlight).
+
+**Recommended Tool:** [Roboflow](https://roboflow.com/) is an excellent platform for dataset management, annotation, and export in YOLO format. You can upload images, label them with bounding boxes, and export datasets ready for YOLOv8 training.
+
+### Example: Dataset Structure (YOLO format)
+
+/dataset
+/images
+/train
+img001.jpg
+img002.jpg
+...
+/val
+img101.jpg
+img102.jpg
+...
+/labels
+/train
+img001.txt
+img002.txt
+...
+/val
+img101.txt
+img102.txt
+...
+
+**Pro tip:**  
+Use annotation tools such as [LabelImg](https://github.com/tzutalin/labelImg) or [Roboflow](https://roboflow.com/) to speed up the labeling process and export directly in YOLO format.
+
+If you want to see a full training pipeline example, check out the [Ultralytics YOLOv8 docs](https://docs.ultralytics.com/).
+
+---
