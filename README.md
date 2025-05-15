@@ -58,11 +58,46 @@ This section demonstrates sample inputs and the corresponding outputs for the th
 
 ---
 
+
+### Vehicle Detection
+
+
+
+**API Request (Python example):**
+
+    import requests
+    import base64
+
+    with open("examples/vehicle_001.jpg", "rb") as img_file:
+        b64_image = base64.b64encode(img_file.read()).decode()
+
+    payload = {"image": b64_image, "origin": "demo"}
+
+    response = requests.post("http://localhost:8000/api/v1/vehicle-detection", json=payload)
+    print(response.json())
+
+**Sample API Response:**
+
+    {
+      "detections": [
+        {
+          "label": "Vehicle",
+          "confidence": 0.97,
+          "box": [120, 80, 280, 140]
+        }
+      ]
+    }
+
+**Output Visualization:**
+
+![Vehicle Damage Output](examples/vehicle_damage_detection_example.png)
+
+---
+
+
 ### License Plate Detection
 
-**Input Image:**
 
-![License Plate Input](examples/vehicle_licence_plate_detection_example.png)
 
 **API Request (Python example):**
 
@@ -91,15 +126,12 @@ This section demonstrates sample inputs and the corresponding outputs for the th
 
 **Output Visualization:**
 
-![License Plate Output](examples/vehicle_detection_example.png)
+![License Plate Input](examples/vehicle_licence_plate_detection_example.png)
 
 ---
 
 ### Vehicle Damage Detection
 
-**Input Image:**
-
-![Vehicle Damage Input](examples/vehicle_damage_01.jpg)
 
 **API Request (Python example):**
 
@@ -132,8 +164,8 @@ This section demonstrates sample inputs and the corresponding outputs for the th
     }
 
 **Output Visualization:**
+![License Plate Output](examples/vehicle_detection_example.png)
 
-![Vehicle Damage Output](examples/vehicle_damage_detection_example.png)
 
 
 ## Training the Models
