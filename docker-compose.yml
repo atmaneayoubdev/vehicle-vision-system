@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  vehicle-vision-api:
+    build: .
+    container_name: vehicle_vision_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app/models:/app/app/models  # Mount model files
+      - ./examples:/app/examples      # Mount example images (optional)
+    restart: always
