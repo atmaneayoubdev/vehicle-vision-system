@@ -158,6 +158,7 @@ For training, images need to be collected and annotated according to the task:
 
 ### Example: Dataset Structure (YOLO format)
 
+```
 /dataset
 /images
 /train
@@ -177,7 +178,7 @@ img002.txt
 img101.txt
 img102.txt
 ...
-
+```
 **Pro tip:**  
 Use annotation tools such as [LabelImg](https://github.com/tzutalin/labelImg) or [Roboflow](https://roboflow.com/) to speed up the labeling process and export directly in YOLO format.
 
