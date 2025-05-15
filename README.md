@@ -51,3 +51,118 @@ Designed for real-time applications like insurance claim processing, parking aut
 
 This project simulates a real-world AI system with model training, optimization, and deployment — ideal for production teams or research applications.
 
+
+## Examples / Demo
+
+This section demonstrates sample inputs and the corresponding outputs for the three main APIs in the Vehicle Vision System: License Plate Detection, Vehicle Type Classification, and Vehicle Damage Detection.
+
+---
+
+### License Plate Detection
+
+**Input Image:**
+
+![License Plate Input](examples/vehicle_licence_plate_detection_example.png)
+
+**API Request (Python example):**
+
+    import requests
+    import base64
+
+    with open("examples/license_plate_01.jpg", "rb") as img_file:
+        b64_image = base64.b64encode(img_file.read()).decode()
+
+    payload = {"image": b64_image, "origin": "demo"}
+
+    response = requests.post("http://localhost:8000/api/v1/license-plate-detector", json=payload)
+    print(response.json())
+
+**Sample API Response:**
+
+    {
+      "detections": [
+        {
+          "label": "Vehicle Plate",
+          "confidence": 0.97,
+          "box": [120, 80, 280, 140]
+        }
+      ]
+    }
+
+**Output Visualization:**
+
+![License Plate Output](examples/vehicle_detection_example.png)
+
+---
+
+### Vehicle Type Classification
+
+**Input Image:**
+
+![Vehicle Type Input](examples/vehicle_damage_detection_example.png)
+
+**API Request (Python example):**
+
+    import requests
+    import base64
+
+    with open("examples/vehicle_type_01.jpg", "rb") as img_file:
+        b64_image = base64.b64encode(img_file.read()).decode()
+
+    payload = {"image": b64_image, "origin": "demo"}
+
+    response = requests.post("http://localhost:8000/api/v1/vehicle-type-classifier", json=payload)
+    print(response.json())
+
+**Sample API Response:**
+
+    {
+      "predictions": [
+        {
+          "label": "Sedan",
+          "confidence": 0.95
+        }
+      ]
+    }
+
+---
+
+### Vehicle Damage Detection
+
+**Input Image:**
+
+![Vehicle Damage Input](examples/vehicle_damage_01.jpg)
+
+**API Request (Python example):**
+
+    import requests
+    import base64
+
+    with open("examples/vehicle_damage_01.jpg", "rb") as img_file:
+        b64_image = base64.b64encode(img_file.read()).decode()
+
+    payload = {"image": b64_image, "origin": "demo"}
+
+    response = requests.post("http://localhost:8000/api/v1/vehicle-damage-detector", json=payload)
+    print(response.json())
+
+**Sample API Response:**
+
+    {
+      "detections": [
+        {
+          "label": "damaged bumper",
+          "confidence": 0.88,
+          "box": [230, 340, 450, 470]
+        },
+        {
+          "label": "damaged headlight",
+          "confidence": 0.82,
+          "box": [120, 200, 180, 260]
+        }
+      ]
+    }
+
+**Output Visualization:**
+
+![Vehicle Damage Output](examples/vehicle_damage_01_output.jpg)

@@ -6,7 +6,7 @@ import numpy as np
 
 # === CONFIG ===
 API_URL = "http://127.0.0.1:8000/api/v1/license-plate-detector"
-image_path = os.path.join("testing", "images", "vehicle_003.jpg")
+image_path = os.path.join("testing", "images", "vehicle_001.jpg")
 
 # === ENCODE IMAGE ===
 with open(image_path, "rb") as img_file:

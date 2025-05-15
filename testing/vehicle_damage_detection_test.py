@@ -8,7 +8,7 @@ import numpy as np
 # Endpoint for vehicle damage
 API_URL = "http://127.0.0.1:8000/api/v1/vehicle-damage-detector"
 # Change the image path if needed
-image_path = os.path.join("testing", "images", "damaged_vehicle_005.jpg")
+image_path = os.path.join("testing", "images", "damaged_vehicle_002.jpg")
 
 # === ENCODE IMAGE ===
 with open(image_path, "rb") as img_file:
