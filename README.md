@@ -450,3 +450,26 @@ curl -X POST http://localhost:8000/api/v1/vehicle-type-classifier \
 > - Use a reverse proxy like **Nginx** to serve the FastAPI app behind **HTTPS**.
 > - Enable request logging and monitoring (e.g., with **Prometheus**, **Grafana**, or **Sentry**) for observability.
 > - Scale using container orchestration tools like **Docker Compose**, **Kubernetes**, or **AWS ECS**.
+
+
+---
+
+## Conclusion
+
+This Vehicle Vision System showcases advanced computer vision capabilities tailored for the automotive domain. Feel free to extend the models, improve dataset quality, or integrate additional features. Contributions and feedback are welcome!
+
+---
+
+## Acknowledgments
+
+- [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics) for the robust object detection framework.  
+- [Roboflow](https://roboflow.com/) for dataset management and labeling tools.  
+- The open-source community for continuous support and development.
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
