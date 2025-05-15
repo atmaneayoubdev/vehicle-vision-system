@@ -26,3 +26,28 @@ This project showcases end-to-end deep learning integration — from **training 
 ---
 
 > 💡 **Note:** Pretrained model weights and datasets are **not included** in this repo for intellectual property reasons. The README includes instructions on training and integrating your own models.
+
+
+## 🚘 Project Overview
+
+**Vehicle Vision System** is a complete computer vision pipeline built to detect, identify, and analyze vehicles in real-world images. This system includes three production-ready APIs powered by custom-trained YOLOv8 models:
+
+- 📛 **License Plate Detection API** – Locates and extracts license plates from vehicle images.
+- 🚗 **Vehicle Type Detection API** – Identifies and classifies vehicles (e.g., car, truck, bus).
+- 💥 **Vehicle Damage Detection API** – Detects external damage areas like broken bumpers, hoods, or headlights.
+
+Designed for real-time applications like insurance claim processing, parking automation, and vehicle registration systems, this project integrates modern deep learning models with a FastAPI backend for efficient, scalable deployment.
+
+---
+
+### 🔍 Key Features
+
+- ✅ **Three separate endpoints** with modular model handling
+- 🧠 **Custom-trained YOLOv8 models** for high-accuracy object detection
+- 🖼️ **Base64 image support** for simple frontend integration
+- 📦 **Clean codebase structure** ready for production or research extension
+- 📊 **Extensible logging system** for tracking inference and failures
+- 🧪 **Built-in test scripts** for quick local validation
+
+This project simulates a real-world AI system with model training, optimization, and deployment — ideal for production teams or research applications.
+
